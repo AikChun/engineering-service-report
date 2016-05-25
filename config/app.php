@@ -149,6 +149,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * RethinkDb service
+         */
+        duxet\Rethinkdb\RethinkdbServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

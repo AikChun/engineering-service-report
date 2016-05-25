@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'rethinkdb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +77,14 @@ return [
             'prefix' => '',
             'schema' => 'public',
         ],
+
+        'rethinkdb' => [
+            'name'      => 'rethinkdb',
+            'driver'    => 'rethinkdb',
+            'host'      => '192.168.10.10',//env('DB_HOST', 'localhost'),
+            'port'      => env('DB_PORT', 28015),
+            'database'  => 'bireme'//env('DB_DATABASE', 'homestead'),            
+        ]
 
     ],
 

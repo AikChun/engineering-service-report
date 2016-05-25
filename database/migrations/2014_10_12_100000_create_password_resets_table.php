@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
+use duxet\Rethinkdb\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreatePasswordResetsTable extends Migration
