@@ -34,4 +34,7 @@ class User extends Model implements
         'password', 'remember_token',
     ];
 
+    public $incrementing = false;
+
+
 }
