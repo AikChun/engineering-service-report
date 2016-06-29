@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\ServiceReport;
 use App\User;
+use DB;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ServiceReportsController extends Controller
      */
     public function index(Authenticatable $user)
     {
-        $serviceReports = \DB::table('service_reports')->get();
+        $serviceReports = DB::table('service_reports')->get();
         return view('service_reports.index', compact('serviceReports'));
     }
 
@@ -51,7 +52,18 @@ class ServiceReportsController extends Controller
     public function store(Request $request, Authenticatable $user) 
     {
         $serviceReport = new \App\ServiceReport($request->all());
-        $serviceReport->save();
+
+        try {
+            DB::beginTransaction();
+
+            DB::insert('insert into service_reports (contact_person, customer_name, email, fax, reference_number, telephone) values (?, ?, ?, ?, ?, ?)', [$request->contact_person, $request->customer_name, $request->email, $request->fax, $request->reference_number, $request->telephone]);
+            DB::select('select * from users where name = ?', ['lajdlkasjdlka;sdjasj;asj']);
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+        DB::commit();
+
+        //$serviceReport->save();
         return back();
     }
 
